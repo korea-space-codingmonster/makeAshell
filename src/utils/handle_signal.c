@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   handle_signal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/12 15:10:31 by napark            #+#    #+#             */
-/*   Updated: 2021/12/12 23:54:12 by napark           ###   ########.fr       */
+/*   Created: 2021/12/12 16:11:32 by napark            #+#    #+#             */
+/*   Updated: 2021/12/12 16:14:23 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# include "libft.h"
-# include <errno.h>
-# include <dirent.h>
-# include <stdbool.h>
-# include <fcntl.h>
-# include "env_var_utils.h"
+#include "minishell.h"
 
-# define EXIT_SYNTAX_ERROR 258
-# define EXIT_CMD_NOT_FOUND 127
-# define EXIT_CTRL_D 130
-
-/*INBUILD*/
-
-
-void    handle_signal(int signal);
-
-#endif
+void    handle_signal(int signal)
+{
+    if (signal == SIGQUIT)
+        return ;
+    if (signal == SIGINT)
+    {
+        ft_printf("\nminishell$");
+    }
+}

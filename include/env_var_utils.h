@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   env_var_utils.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/12 15:10:31 by napark            #+#    #+#             */
-/*   Updated: 2021/12/12 23:54:12 by napark           ###   ########.fr       */
+/*   Created: 2021/12/12 16:04:54 by napark            #+#    #+#             */
+/*   Updated: 2021/12/12 23:55:00 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# include "libft.h"
-# include <errno.h>
-# include <dirent.h>
-# include <stdbool.h>
-# include <fcntl.h>
-# include "env_var_utils.h"
+#ifndef ENV_VAR_UTILS_H
+# define ENV_VAR_UTILS_H
 
-# define EXIT_SYNTAX_ERROR 258
-# define EXIT_CMD_NOT_FOUND 127
-# define EXIT_CTRL_D 130
+/*환경변수 저장 구조체*/
+typedef struct s_env
+{
+    char    **envp;
+    char    **env_var;
+    char    **pwd;
+    char    **oldpwd;
+}   t_env;
 
-/*INBUILD*/
+//get //set
+void	set_envv(t_env *envv);
+t_env	*get_envv(void);
+char	**get_env_var(void);
 
-
-void    handle_signal(int signal);
 
 #endif

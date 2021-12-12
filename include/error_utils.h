@@ -6,7 +6,12 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:23:43 by napark            #+#    #+#             */
-/*   Updated: 2021/12/12 15:27:14 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/12 22:55:12 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ERROR_UTILS_H
+# define ERROR_UTILS_H
+
+
+#endif
