@@ -1,29 +1,89 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/12/12 13:48:30 by napark            #+#    #+#              #
+#    Updated: 2021/12/12 15:08:03 by napark           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# COMMANDS & FLAGS
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -Qunused-arguments `pkg-config --libs --cflags readline`
+CC_FLAGS = -Wall -Werror -Wextra -g
+INCLUDE_FLAGS = -I ./include/ -I $(LIBFT_PATH)include/
+L_FLAGS = -lreadline
+RM = rm -f
 
-NAME = minishell
+# EXECUTABLE
+NAME = ./minishell
+LBFT_NAME = $(LIBFT_PATH)lib/libft.a
 
-SRCS =	main.c\
-		parsing.c\
-		init.c\
+# PATHS
+SRC_PATH = ./src/
+OBJ_PATH = ./obj
+LIBFT_PATH = ./libft/
+BRAIN_PATH = $(SRC_PATH)brain/
+LEXER_UTILS_PATH = $(BRAIN_PATH)utils/getter_setter/
+PARSER_UTILS_PATH = $(BRAIN_PATH)utils/parser_utils/
+EXPANDER_UTILS_PATH = $(BRAIN_PATH)utils/expander_utils/
 
-OBJS = $(SRCS:.c=.o)
+# COLORS
+Y = "\033[33m"
+R = "\033[31m"
+G = "\033[32m"
+B = "\033[34m"
+X = "\033[0m"
+UP = "\033[A"
+CUT = "\033[K"
 
-%.o: %.c
-	$(CC $(CFLAGS) -c $< -o $@ -I ./
+# FILES
+SRC = $(SRC_PATH)main.c \
 
-$(NAME): $(OBJS)
-	@ make bonus -C ./lib/libft/
-	$(CC) $(CFLAGS) -I ./ $^ -o $@ ./lib/libft/libft.a
+
 
 all: $(NAME)
+	@printf "\n"
+	@echo $(G)"       _     _     _       _ _ "$(X)
+	@echo $(G)" _____|_|___|_|___| |_ ___| | |"$(X)
+	@echo $(G)"|     | |   | |_ -|   | -_| | |"$(X)
+	@echo $(G)"|_|_|_|_|_|_|_|___|_|_|___|_|_|"$(X)
+	@printf "\n\n"
+
+$(LIBFT_NAME): $(LIBFT_SRC)
+	@echo $(Y)Compiling [$@]...$(X)
+	@mkdir -p $(dir $@)
+	@$(CC) $(CC_FLAGS) $(INCLUDE_FLAGS) -o $@ -c $<
+	@printf $(UP)$(CUT)
+	@echo $(G)Finished [$@]$(X)
+	@printf $(UP)$(CUT)
 
 clean:
-	rm -rf $(OBJS)
-	@ make clean -C ./libft
+	@make -C $(LIBFT_PATH) clean
+	@if [ -d "$(OBJ_PATH)" ]; then \
+		$(RM) -r $(OBJ_PATH); \
+		echo $(R)Cleaning" "[$(OBJ_PATH)]...$(X); \
+	fi;
 
 fclean: clean
-	rm -rf $(NAME)
-	@ make fclean -C ./libft
+	@make -C $(LIBFT_PATH) fclean
+	@if [ -f "$(NAME)" ]; then \
+		$(RM) $(NAME); \
+		echo $(R)Cleaning" "[$(NAME)]...$(X); \
+	fi;
 
 re: fclean all
+
+# TESTING RULES
+norm:
+	@echo $(G)Checking Norminette...$(X)
+	norminette | grep Error | egrep --color '.*Error!|$$'
+	@echo $(G)Done$(X)
+
+run: all
+	$(NAME)
+
+
+.PHONY: all, clean, fclean, re, norm
