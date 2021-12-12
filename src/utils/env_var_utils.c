@@ -6,13 +6,13 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 16:18:25 by napark            #+#    #+#             */
-/*   Updated: 2021/12/12 23:12:15 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/13 00:54:48 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_env   *init_env(char **envp)
+t_env   *init_envv(char **envp)
 {
     t_env   *envv;
     

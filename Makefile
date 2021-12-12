@@ -6,7 +6,7 @@
 #    By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/12 13:48:30 by napark            #+#    #+#              #
-#    Updated: 2021/12/12 15:53:20 by napark           ###   ########.fr        #
+#    Updated: 2021/12/13 00:38:28 by napark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,15 @@ EXPANDER_UTILS_PATH = $(BRAIN_PATH)utils/expander_utils/
 
 # FILES
 SRC = $(SRC_PATH)main.c \
-		
+		$(SRC_PATH)utils/env_var_utils.c $(SRC_PATH)utils/envv_get_set.c $(SRC_PATH)utils/error_utils.c $(SRC_PATH)utils/handle_signal.c\
+		$(SRC_PATH)inbuilt/export.c $(SRC_PATH)inbuilt/echo.c $(SRC_PATH)inbuilt/env.c $(SRC_PATH)inbuilt/cd.c $(SRC_PATH)inbuilt/pwd.c $(SRC_PATH)inbuilt/unset.c $(SRC_PATH)inbuilt/exit.c \
+		$(SRC_PATH)inbuilt/utils/export_special.c $(SRC_PATH)inbuilt/utils/export_input_error.c $(SRC_PATH)inbuilt/utils/export_only.c \
+		$(BRAIN_PATH)lexer.c $(BRAIN_PATH)parser.c $(BRAIN_PATH)expander.c $(BRAIN_PATH)executor.c \
+		$(LEXER_UTILS_PATH)subshell_token_utils.c $(LEXER_UTILS_PATH)token_utils.c $(LEXER_UTILS_PATH)join_quotes.c $(LEXER_UTILS_PATH)check_syntax.c \
+		$(LEXER_UTILS_PATH)join_quotes_utils.c $(LEXER_UTILS_PATH)join_quotes_utils_two.c \
+		$(BRAIN_GETTER_SETTER_PATH)envp_get_set.c $(BRAIN_GETTER_SETTER_PATH)iter_get_set.c $(BRAIN_GETTER_SETTER_PATH)lexer_get_set.c $(BRAIN_GETTER_SETTER_PATH)par_tok_get_set.c $(BRAIN_GETTER_SETTER_PATH)expander_get_set.c \
+		$(PARSER_UTILS_PATH)get_tokens_utils.c $(PARSER_UTILS_PATH)get_tokens.c $(PARSER_UTILS_PATH)interprete_env_var.c $(PARSER_UTILS_PATH)parser_utils.c $(PARSER_UTILS_PATH)tok_redir_utils.c \
+		$(EXPANDER_UTILS_PATH)heredoc_utils.c $(EXPANDER_UTILS_PATH)handle_redirs_utils.c $(EXPANDER_UTILS_PATH)handle_pipes.c $(EXPANDER_UTILS_PATH)set_pipe_type.c
 OBJ = $(patsubst $(SRC_PATH)%.c, $(OBJ_PATH)%.o, $(SRC))
 LIBFT_SRC = $(LIBFT_PATH)src/*/*.c
 

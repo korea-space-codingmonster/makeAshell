@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   error_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/12 15:10:31 by napark            #+#    #+#             */
-/*   Updated: 2021/12/13 01:20:32 by napark           ###   ########.fr       */
+/*   Created: 2021/12/13 00:31:10 by napark            #+#    #+#             */
+/*   Updated: 2021/12/13 00:40:38 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# include "libft.h"
-# include <errno.h>
-# include <dirent.h>
-# include <stdbool.h>
-# include <fcntl.h>
+#include "minishell.h"
 
-/*headers*/
-# include "env_var_utils.h"
-# include "error_utils.h"
-# include "lexer_utils.h"
+static int	_get_err_code(int err_code, bool set_err_code)
+{
+	static int	static_err_code = 0;
 
+	if (set_err_code)
+		static_err_code = err_code;
+	return (static_err_code);
+}
 
-# define EXIT_SYNTAX_ERROR 258
-# define EXIT_CMD_NOT_FOUND 127
-# define EXIT_CTRL_D 130
+void	set_err_code(int err_code)
+{
+	_get_err_code(err_code, true);
+}
 
-/*INBUILD*/
-
-
-void    handle_signal(int signal);
-
-#endif
+int	get_err_code(void)
+{
+	return (_get_err_code(0, false));
+}

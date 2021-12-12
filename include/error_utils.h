@@ -6,12 +6,14 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:23:43 by napark            #+#    #+#             */
-/*   Updated: 2021/12/12 22:55:12 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/13 00:21:25 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_UTILS_H
 # define ERROR_UTILS_H
 
+void	set_err_code(int err_code);
+int		get_err_code(void);
 
 #endif
