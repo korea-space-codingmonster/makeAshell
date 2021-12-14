@@ -6,11 +6,12 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 00:31:10 by napark            #+#    #+#             */
-/*   Updated: 2021/12/13 00:40:38 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/15 00:46:46 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "error_utils.h"
 
 static int	_get_err_code(int err_code, bool set_err_code)
 {

@@ -6,12 +6,12 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 01:11:49 by napark            #+#    #+#             */
-/*   Updated: 2021/12/13 01:25:46 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/15 00:40:41 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
+#include "lexer_utils.h"
 
 static int	get_quotes_pos(char *tok)
 {
@@ -63,12 +63,12 @@ static int	end_token_join(t_quotes *quo, int ret_status)
 	return (ret_status);
 }
 
-static int  token_join(char ***tokens, int i)
+static int	token_join(char ***tokens, int i)
 {
-    t_quotes    *quo;
-    int         check;
-    
-    quo = init_quo(tokens, i);
+	t_quotes	*quo;
+	int			check;
+
+	quo = init_quo(tokens, i);
 	if (quo == NULL)
 		return (EXIT_FAILURE);
 	check = token_join_all_starts(tokens, quo, i);

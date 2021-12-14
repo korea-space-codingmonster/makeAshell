@@ -6,12 +6,12 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 01:15:27 by napark            #+#    #+#             */
-/*   Updated: 2021/12/13 01:26:03 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/14 00:17:30 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_UTILS_H
-#define LEXER_UTILS_H
+# define LEXER_UTILS_H
 
 typedef struct s_quotes
 {

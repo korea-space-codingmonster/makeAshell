@@ -6,11 +6,12 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 23:52:52 by napark            #+#    #+#             */
-/*   Updated: 2021/12/12 23:53:15 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/15 00:46:39 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "env_var_utils.h"
 
 static t_env	*_get_envv(t_env *envv)
 {
