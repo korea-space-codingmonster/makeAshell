@@ -6,7 +6,7 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 15:10:31 by napark            #+#    #+#             */
-/*   Updated: 2021/12/15 00:47:30 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/29 00:20:05 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		pwd(void);
 int		cd(char **argv);
 int		exit_inbuilt(char *args[]);
 
-void	handle_signal(int sig);
+void	handle_cmd_signals(void);
+void	handle_global_signals(void);
 
 #endif

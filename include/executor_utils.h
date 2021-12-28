@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inbuilt_utils.h                                    :+:      :+:    :+:   */
+/*   executor_utils.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 00:17:15 by napark            #+#    #+#             */
-/*   Updated: 2021/12/29 00:19:39 by napark           ###   ########.fr       */
+/*   Created: 2021/12/29 00:19:09 by napark            #+#    #+#             */
+/*   Updated: 2021/12/29 00:19:15 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INBUILT_UTILS_H
-# define INBUILT_UTILS_H
+#ifndef EXECUTOR_UTILS_H
+# define EXECUTOR_UTILS_H
 
-# include "env_var_utils.h"
-
-/* TRANSPORT OF VARIABLES OF EXPORT */
-typedef struct s_export
-{
-	int		i;
-	int		j;
-	char	*var;
-}			t_export;
-
-/* INBUILD_UTILS */
-int		export_only(t_env *envv);
-int		export_input_error(char **argv);
-int		export_special(t_env *envv, t_export *exp);
-int		export_wd(t_env *envv, t_export *exp, char **argv);
+int		clean_exp_tok_cmds(t_exp_tok *exp_tok);
+int		handle_inbuilt_redir(t_exp_tok *exp_tok);
+int		execute_inbuilt(t_exp_tok *exp_tok);
+bool	is_inbuilt(char *cmd);
+int		execute_child(t_exp_tok *exp_tok, char *abs_cmd_path, int status);
+int		execute_inbuilt_child(t_exp_tok *exp_tok);
+int		execute_inbuilt_reset_fds(t_exp_tok *exp_tok, int saved_fds[2]);
 
 #endif

@@ -6,15 +6,14 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 00:16:20 by napark            #+#    #+#             */
-/*   Updated: 2021/12/15 00:48:12 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/29 00:18:14 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BRAIN_H
 # define BRAIN_H
 
-# include <readline/history.h>
-# include <readline/readline.h>
+# include <stdlib.h>
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <stdbool.h>
@@ -62,6 +61,7 @@ typedef struct s_expander_tokens
 	char			**cmd;
 	int				in;
 	int				out;
+	bool			is_pipe;
 }	t_exp_tok;
 
 // BRAIN
