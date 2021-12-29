@@ -6,14 +6,13 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 00:00:07 by napark            #+#    #+#             */
-/*   Updated: 2021/12/17 21:10:49 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/29 22:28:39 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "brain.h"
 #include "parser_utils.h"
-
 
 int	get_tok_cmd(char *lex_tok, t_par_tok *par_tok, t_iter *iter)
 {
@@ -136,7 +135,8 @@ int	get_tok_type(char *lex_tok, t_iter *iter)
 		par_tok->redir_type[is_in_heredoc] = true;
 	if (ft_strlen(lex_tok) == 2 && ft_strstr(lex_tok, ">>"))
 		par_tok->redir_type[is_out_append] = true;
-	if (ft_strchr(lex_tok, '(') && ft_strchr(lex_tok, ')'))
+	if ((lex_tok[0] != '\'' && lex_tok[0] != '\"') \
+	&& (ft_strchr(lex_tok, '(') && ft_strchr(lex_tok, ')')))
 		par_tok->type = subshell;
 	return (EXIT_SUCCESS);
 }

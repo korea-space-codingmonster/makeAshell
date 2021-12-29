@@ -6,10 +6,9 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 01:45:49 by napark            #+#    #+#             */
-/*   Updated: 2021/12/17 21:26:26 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/29 22:28:21 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "minishell.h"
 #include "brain.h"
@@ -26,6 +25,12 @@ int	set_tok_type_pipe(t_par_tok *par_tok, t_iter *iter)
 	return (EXIT_BREAK);
 }
 
+/**
+ * @brief  Gets subshell token for current parser token
+ * @note   Helper function of get_special_tok
+ * @param  *iter: 
+ * @retval int to indicate success or failure
+ */
 int	get_subshell_tok(t_iter *iter)
 {
 	char		*lex_tok;

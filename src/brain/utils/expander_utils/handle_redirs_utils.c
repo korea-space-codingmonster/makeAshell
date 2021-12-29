@@ -6,7 +6,7 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 01:40:33 by napark            #+#    #+#             */
-/*   Updated: 2021/12/17 21:09:51 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/29 00:47:59 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,18 @@ static int	open_in(t_par_tok *par_tok, t_exp_tok *exp_tok)
 	int		fd;
 	int		heredeoc_fd;
 
-
 	i = 0;
 	fd = 0;
-	if (exp_tok->in != 0)
-		heredeoc_fd = exp_tok->in;	
-
+	if (exp_tok->in != STDIN_FILENO)
+		heredeoc_fd = exp_tok->in;
 	while (par_tok->redir_type[is_in] || par_tok->redir_type[is_in_heredoc])
 	{
-		i++;
-		if (par_tok->redir_type[is_in])
+		if (ft_strncmp(par_tok->in[i++], "<<", 2) != 0)
 			fd = open(par_tok->in[i], O_RDONLY);
 		else if (par_tok->redir_type[is_in_heredoc])
 			fd = heredeoc_fd;
 		if (fd == -1)
-		{
-			// fprintf(stderr, "something with %s is wrong\n", par_tok->in[i]);//remove after testing
-			perror("ERROR");
-			return (EXIT_FAILURE);
-		}
+			return (ft_perror(EXIT_FAILURE, "open error"));
 		if (par_tok->in[i + 1] == NULL)
 			break ;
 		if (fd != heredeoc_fd && fd != 0 && fd != 1)
@@ -46,7 +39,6 @@ static int	open_in(t_par_tok *par_tok, t_exp_tok *exp_tok)
 		i++;
 	}
 	exp_tok->in = fd;
-	// fprintf(stderr, "the new fd for input is now %d\n", exp_tok->in);//remove after testing
 	return (EXIT_SUCCESS);
 }
 
@@ -66,10 +58,7 @@ static int	open_out(t_par_tok *par_tok, t_exp_tok *exp_tok)
 			&& ft_strcmp(par_tok->out[i++], ">>") == 0)
 			fd = open(par_tok->out[i], O_RDWR | O_CREAT | O_APPEND, 0644);
 		if (fd == -1)
-		{
-			perror("ERROR");
-			return (EXIT_FAILURE);
-		}
+			return (ft_perror(EXIT_FAILURE, "open error"));
 		if (par_tok->out[i + 1] == NULL)
 			break ;
 		if (fd != 0 && fd != 1)
@@ -90,6 +79,12 @@ int	handle_redir(t_par_tok *par_tok, t_exp_tok *exp_tok, int pipe_type)
 		return (EXIT_FAILURE);
 	if (handle_pipes(exp_tok, pipe_type) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
+	if (par_tok->redir_type[is_pipe] == true)
+		exp_tok->is_pipe = true;
+	else
+		exp_tok->is_pipe = false;
+	if (par_tok->type == subshell)
+		return (handle_subshell(exp_tok));
 	exit_status = executor(exp_tok);
 	if (exp_tok->in != STDIN_FILENO)
 		close(exp_tok->in);

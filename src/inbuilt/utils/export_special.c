@@ -6,7 +6,7 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 00:10:31 by napark            #+#    #+#             */
-/*   Updated: 2021/12/17 21:11:19 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/29 22:31:01 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include "env_var_utils.h"
 #include "inbuilt_utils.h"
 
-
+/*
+will update envv->pwd/oldpwd if exported
+*/
 int	export_wd(t_env *envv, t_export *exp, char **argv)
 {
 	if (ft_strlen(argv[exp->j]) > ft_strlen("PWD=")
@@ -36,13 +38,6 @@ int	export_wd(t_env *envv, t_export *exp, char **argv)
 	return (EXIT_SUCCESS);
 }
 
-/*
-will check if you exported PWD or OLDPWD without an =, therefore without
-a value and then add the stored value of the correct variable to it
-returns 2 if its PWD that needs to be added
-returns 3 if its OLDPWD that needs to be added
-returns EXIT_FAILURE if nothing needs to be done because it has a value
-*/
 int	export_special(t_env *envv, t_export *exp)
 {
 	if (envv->env_var == NULL)
