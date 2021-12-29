@@ -6,7 +6,7 @@
 #    By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/12 13:48:30 by napark            #+#    #+#              #
-#    Updated: 2021/12/29 22:53:14 by napark           ###   ########.fr        #
+#    Updated: 2021/12/30 00:05:34 by napark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ CC = gcc
 CC_FLAGS = -Wall -Werror -Wextra -g
 INCLUDE_FLAGS = -I ./include/ -I $(LIBFT_PATH)include/
 L_FLAGS = -lreadline
-READLINE = -L /Users/$(USER)/.brew/opt/readline/lib
-READLINE_INC = -I /Users/$(USER)/.brew/opt/readline/include
+READLINE = -L /opt/homebrew/opt/readline/lib
+READLINE_INC = -I /opt/homebrew/opt/readline/include
 RM = rm -f
 
 # EXECUTABLE

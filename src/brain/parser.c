@@ -6,7 +6,7 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 00:31:02 by napark            #+#    #+#             */
-/*   Updated: 2021/12/29 00:23:28 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/29 23:53:18 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 
 #define NO_OF_ITERATORS 5
 
+/**
+ * @brief  Trys to get correct current parser token
+ * @note   Helper function of get_tokens
+ * @param  *lex_toks[]:
+ * @param  *par_toks[]:
+ * @param  *iter:
+ * @retval int to indicate exit status
+ */
 static int	get_par_tok(char *lex_toks[], t_par_tok *par_toks[], t_iter *iter)
 {
 	int	tmp;

@@ -6,7 +6,7 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 00:09:59 by napark            #+#    #+#             */
-/*   Updated: 2021/12/29 22:30:45 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/29 23:56:02 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 #include "env_var_utils.h"
 #include "inbuilt_utils.h"
 
-/*
-is used to cleanly exit with the given exit_status
-*/
 static int	ft_export_exit(char ***array, bool exit_status)
 {
 	ft_free_str_array(array);
@@ -25,9 +22,6 @@ static int	ft_export_exit(char ***array, bool exit_status)
 	return (EXIT_SUCCESS);
 }
 
-/*
-loops through all elements of env_var_cpy and sorts them by ascending order
-*/
 static int	ft_sort_loop(char **env_var_cpy, int i, int j)
 {
 	char	*temp;
@@ -57,9 +51,6 @@ static int	ft_sort_loop(char **env_var_cpy, int i, int j)
 	return (EXIT_SUCCESS);
 }
 
-/*
-will print the variables with their value just as export does
-*/
 static int	ft_print_with_value(char **env_var_cpy, int i)
 {
 	int	j;
@@ -82,9 +73,6 @@ static int	ft_print_with_value(char **env_var_cpy, int i)
 	return (EXIT_SUCCESS);
 }
 
-/*
-mimics the behavior of calling export without any arguments
-*/
 int	export_only(t_env *environment)
 {
 	char	**env_var_cpy;

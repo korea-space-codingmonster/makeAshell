@@ -6,7 +6,7 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 01:41:07 by napark            #+#    #+#             */
-/*   Updated: 2021/12/29 00:48:20 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/29 23:59:39 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@ static void	wait_for_heredoc_help(t_exp_tok *exp_tok)
 	}
 }
 
+/**
+ * @brief  Waits in readline-prompt as long as heredoc is not typed
+ * @note
+ * @param  *par_tok:
+ * @retval int to indicate success or failure
+ */
 int	wait_for_heredoc(
 	t_par_tok *par_tok, t_exp_tok *exp_tok, char *buf, char *heredoc
 	)

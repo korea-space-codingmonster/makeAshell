@@ -6,7 +6,7 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 00:03:10 by napark            #+#    #+#             */
-/*   Updated: 2021/12/29 22:34:39 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/29 23:52:46 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ static int	init(char **path_splitted[])
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * @brief  Returns absolute command path of cmd or NULL if not found or error
+ * @note
+ * @param  *cmd:
+ * @retval
+ */
 static char	*get_abs_cmd(char *cmd)
 {
 	char	**path_splitted;
@@ -70,6 +76,13 @@ static char	*get_abs_cmd(char *cmd)
 	return (NULL);
 }
 
+/**
+ * @brief  Executes command in child process
+ * @note   Waits for child process to finish
+ * @param  *exp_tok:
+ * @param  *abs_cmd_path:
+ * @retval exit status of child process
+ */
 static int	execute_cmd(t_exp_tok *exp_tok, char *abs_cmd_path)
 {
 	pid_t	pid;

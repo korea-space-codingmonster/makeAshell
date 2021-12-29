@@ -6,7 +6,7 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 01:42:17 by napark            #+#    #+#             */
-/*   Updated: 2021/12/29 00:50:29 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/30 00:01:26 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,12 @@ static bool	is_correc_pipe(char *curr, char *next)
 	return (true);
 }
 
+/**
+ * @brief  Checks if tokens have correct syntax
+ * @note   
+ * @param  *lex_toks[]: Tokens to check syntax from
+ * @retval true on valid syntax, false on invalid syntax
+ */
 bool	is_valid_syntax(char *lex_toks[])
 {
 	int	i;

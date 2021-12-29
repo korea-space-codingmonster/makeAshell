@@ -6,7 +6,7 @@
 /*   By: napark <napark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 00:01:50 by napark            #+#    #+#             */
-/*   Updated: 2021/12/29 22:29:12 by napark           ###   ########.fr       */
+/*   Updated: 2021/12/30 00:04:24 by napark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,6 @@ int	free_par_toks(t_par_tok *par_toks[], int exit_code)
 	return (exit_code);
 }
 
-/**
- * @brief  Correctly frees allocated memory for parser tokens and iterator
- * @note   
- * @param  *par_tok[]: Parser Tokens
- * @param  *iter: Iterator of Parser Tokens, Lexer Tokens, Command-, In- and 
- * * Out-Array
- * @param  exit_status: Exit status to return
- * @retval Returns exit_status
- */
 int	free_parser(t_par_tok *par_tok[], t_iter *iter, int exit_status)
 {
 	free_par_toks(par_tok, 0);
@@ -67,12 +58,6 @@ int	free_parser(t_par_tok *par_tok[], t_iter *iter, int exit_status)
 	return (exit_status);
 }
 
-/**
- * @brief  Returns correct size for allocation of Parser-Tokens-Array
- * @note   
- * @param  *lex_toks[]: 
- * @retval Correct Size for allocation
- */
 size_t	get_tokens_size(char *lex_toks[])
 {
 	size_t	size;
